@@ -53,12 +53,11 @@ function startTimer(){
   const seconds = parseInt(this.dataset.time);
   timer(seconds);
 }
-
-buttons.forEach(button=>button.addEventListener('click',startTimer));
-document.querySelector("#but").addEventListener("click", () => {
-  var entree = document.getElementById("entree").value
-  clearInterval(m);
-  a = entree;
-  timer(a, "timer")
-  restantAffichage(seconds);
-})
+buttons.forEach(button => button.addEventListener('click', startTimer));
+document.customForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const mins = this.minutes.value;
+  console.log(mins);
+  timer(mins * 60);
+  this.reset();
+});
